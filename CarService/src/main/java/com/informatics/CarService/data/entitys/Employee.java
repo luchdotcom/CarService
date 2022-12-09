@@ -17,6 +17,7 @@ import javax.persistence.Table;
 public class Employee extends BaseEntity {
 
     private String mechanicName;
+    private String qualification;
 
     @ManyToOne
     @JoinColumn(name = "employee_id")

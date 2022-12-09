@@ -16,12 +16,15 @@ import java.util.List;
 public class ServiceStation extends BaseEntity{
 
     private String serviceName;
-
+   // private List<TypeOfService> typeOfServices;
     ///Node
-    private String city;
-    private String address;
+//    private String city;
+//    private String address;
 
 
+    @ManyToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
     @OneToMany(mappedBy = "serviceStation")
     @JsonIgnoreProperties("serviceStation")
     private List<Employee> employees;
