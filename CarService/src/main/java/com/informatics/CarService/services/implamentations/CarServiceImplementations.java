@@ -10,10 +10,10 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class CarServiceImplamentations implements CarService {
+public class CarServiceImplementations implements CarService {
     private final CarRepository carRepository;
 
-    public CarServiceImplamentations(CarRepository carRepository) {
+    public CarServiceImplementations(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
 
