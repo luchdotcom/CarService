@@ -22,7 +22,7 @@ public class ServiceStation extends BaseEntity{
 //    private String address;
 
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "address_id")
     private Address address;
     @OneToMany(mappedBy = "serviceStation")

@@ -1,8 +1,7 @@
 package com.informatics.CarService.web.api;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.informatics.CarService.data.entitys.Car;
-import com.informatics.CarService.services.CarService;
+import com.informatics.CarService.services.interfaces.CarService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

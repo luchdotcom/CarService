@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
+
 @Getter
 @Setter
 //@NoArgsConstructor
@@ -48,7 +50,6 @@ public class Car extends BaseEntity {
     private String regID;
 
 
-    @OneToOne
-//    @JoinColumn("");
-    private Owner owner;
+    @ManyToMany(mappedBy = "cars")
+    private List<Owner> owners;
 }

@@ -6,7 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import java.util.Set;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,5 +22,8 @@ public class Repair extends BaseEntity{
 
     @ManyToOne
     private Car repairCar;
+    
+    @ManyToMany
+    private Set<Employee> employeeSet;
 
 }
