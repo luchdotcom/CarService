@@ -1,4 +1,4 @@
-package com.informatics.CarService.services;
+package com.informatics.CarService.services.interfaces;
 
 import com.informatics.CarService.data.entitys.Car;
 
