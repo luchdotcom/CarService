@@ -1,6 +1,7 @@
 package com.informatics.CarService.data.entitys;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,6 +25,7 @@ public class Repair extends BaseEntity{
     private Car repairCar;
     
     @ManyToMany
+    @JsonIgnoreProperties("employee_id")
     private Set<Employee> employeeSet;
 
 }
