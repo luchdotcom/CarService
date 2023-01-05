@@ -11,19 +11,35 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/api/cars")
 public class CarApiController {
-    private final CarService carService;
+    private final CarService  carService;
 
-    public CarApiController(CarService carService) {
-        this.carService = carService;
-    }
+//    public CarApiController(CarService carService) {
+//        this.carService = carService;
+//    }
 
     @GetMapping
     public List<Car> getCars(){
         return carService.getCars();
     }
+
+    @RequestMapping("/{id}")
+    public Car getCarById(@PathVariable("id") int id){
+        return carService.getCarById(id);
+    }
     @PostMapping
     public Car createCar(@RequestBody Car car){
         return carService.create(car);
     }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+    public Car updateCar(@PathVariable("id") long id, @RequestBody Car car){
+        return carService.updateCar(id,car);
+    }
+
+    @DeleteMapping("/id")
+    public void deleteCar(@PathVariable ("id")long id){
+        carService.deleteCar(id);
+    }
+
 }
 
