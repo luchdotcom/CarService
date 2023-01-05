@@ -19,6 +19,6 @@ public interface AddressRepository extends JpaRepository<Address,Long>{
     @Override
     List<Address> findAll();
 
-    List<Address> getAddressesByIdAndOwners(long id, Set<Owner> owners);
-    List<Address> getAddressesByOwnersName(String OwnerName);
+    List<Address> getAddressById(long id);
+    List<Address> getAddressByOwners(String name);
 }

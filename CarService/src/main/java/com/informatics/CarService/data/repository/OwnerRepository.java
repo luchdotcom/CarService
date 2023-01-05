@@ -11,9 +11,8 @@ public interface OwnerRepository extends JpaRepository<Owner,Long> {
     @Override
     List<Owner> findAllById(Iterable<Long> longs);
 
-    List<Owner> getAllByAddress(List<Address> ownerAddress);
+    List<Owner> findAllByAddress(String ownerAddress);
 
-    List<Owner> getByCarsId(Long carId);
-    List<Owner> getByCarsMark(String carMark);
+    List<Owner> findByCarsId(Long carId);
 
 }
