@@ -1,0 +1,34 @@
+!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+<h4>Register the Cars</h4>
+<div class="col-6">
+  <form action="#" th:action="@{/cars/create-car}" th:object="${'car'}" method="post">
+    <div class="form-group">
+      <div class="form-group">
+        <label for="car-marc">Car mark</label>
+        <input class="form-control" type="text" th:field="*{'car-marc'}" placeholder="car-marc" id="car-marc">
+        <span class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{'name'}">model Error</span>
+      </div>
+      <div class="form-group">
+        <label for="car_model">car_model</label>
+        <input class="form-control" type="text" th:field="*{'car_model'}"
+               placeholder="Car model" id="car_model">
+        <span class="text-danger" th:if="${#fields.hasErrors('car_model')}"
+              th:errors="*{'car_model'}">Car Model Error</span>
+      </div>
+      <div class="form-group">
+        <label for="dateOfManufacture">Date of manufacture</label>
+        <input class="form-control" type="date" th:field="*{'dateOfManufacture'}" id="dateOfManufacture">
+        <span class="text-danger" th:if="${#fields.hasErrors('dateOfManufacture')}"
+              th:errors="*{'dateOfManufacture'}">Foundation Date Error</span>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Car</button>
+  </form>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>
