@@ -1,8 +1,12 @@
-package com.informatics.CarService.web.view;
+package com.informatics.CarService.web.view.controlers;
 
 import com.informatics.CarService.data.entitys.Car;
 import com.informatics.CarService.data.repository.CarRepository;
+import com.informatics.CarService.dto.CarDTO;
+import com.informatics.CarService.dto.CreateCarDTO;
 import com.informatics.CarService.services.interfaces.CarService;
+import com.informatics.CarService.web.view.model.CarViewModel;
+import com.informatics.CarService.web.view.model.CreateCarViewModel;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
@@ -20,12 +24,20 @@ public class CarController {
     private CarService carService;
     private final CarRepository carRepository;
 
-    //    private final ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
+
     @GetMapping
     public String getCars(Model model){
-        final List<Car> cars= carService.getCars();
+        final List<CarViewModel> cars= carService.getCars()
+                .stream()
+                .map(this::convertToCarViewModel)
+                .collect(Collectors.toList());
         model.addAttribute("cars",cars);
-        return "cars/cars";
+        return "/cars/cars";
+    }
+
+    private CarViewModel convertToCarViewModel(CarDTO carDTO) {
+        return modelMapper.map(carDTO,CarViewModel.class);
     }
 
     @GetMapping("/create-car")
@@ -35,8 +47,11 @@ public class CarController {
     }
 
     @PostMapping("/create")
-    public String createCar(@Valid @ModelAttribute("car") Car car) {
-        carService.create(car);
+    public String createCar(@Valid @ModelAttribute("car") CreateCarViewModel car,BindingResult bindingResult) {
+        if (bindingResult.hasErrors()){
+            return "cars/create-car";
+        }
+        carService.create(modelMapper.map(car, CreateCarDTO.class));
         return "redirect:/cars";
     }
 

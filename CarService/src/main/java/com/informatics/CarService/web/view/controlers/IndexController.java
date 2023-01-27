@@ -1,4 +1,4 @@
-package com.informatics.CarService.web.view;
+package com.informatics.CarService.web.view.controlers;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,7 +13,7 @@ public class IndexController {
 
     @GetMapping
     public String getIndex(Model model) {
-        final String welcomeMessage = "Welcome to the School Management System!";
+        final String welcomeMessage = "Welcome to the Car Management System!";
         model.addAttribute("welcome", welcomeMessage);
         return "index";
     }

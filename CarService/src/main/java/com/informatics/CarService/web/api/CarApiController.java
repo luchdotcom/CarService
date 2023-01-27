@@ -1,8 +1,12 @@
 package com.informatics.CarService.web.api;
 
 import com.informatics.CarService.data.entitys.Car;
+import com.informatics.CarService.dto.CarDTO;
+import com.informatics.CarService.dto.CreateCarDTO;
 import com.informatics.CarService.services.interfaces.CarService;
+import com.informatics.CarService.web.view.model.CreateCarViewModel;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,13 +16,14 @@ import java.util.List;
 @RequestMapping("/api/cars")
 public class CarApiController {
     private final CarService  carService;
+    private final ModelMapper modelMapper;
 
 //    public CarApiController(CarService carService) {
 //        this.carService = carService;
 //    }
 
     @GetMapping
-    public List<Car> getCars(){
+    public List<CarDTO> getCars(){
         return carService.getCars();
     }
 
@@ -27,8 +32,8 @@ public class CarApiController {
         return carService.getCarById(id);
     }
     @PostMapping
-    public Car createCar(@RequestBody Car car){
-        return carService.create(car);
+    public Car createCar(@RequestBody CreateCarViewModel car){
+        return carService.create(modelMapper.map(car, CreateCarDTO.class));
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
