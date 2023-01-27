@@ -5,22 +5,28 @@
 <header th:replace="fragments :: header"></header>
 <h4 th:if="${cars.size()>0}" th:text="'Cars: ' + ${cars.size()}"> </h4>
 <div class=" col-6">
-  <h3 th:unless="${cars} and ${cars.size()}">There are no schools!</h3>
+  <a class="btn btn-primary" th:href="@{'/cars/create-car/'}">Create New Car</a>
+  <a class="btn btn-primary" th:href="@{'/cars/search-car-by-regID/'}">Search Car</a>
+  <h3 th:unless="${cars} and ${cars.size()}">There are no cars!</h3>
   <table th:if="${cars.size()>0}" class="table table-hover">
     <th>Id</th>
     <th>car Marc</th>
+    <th>car Model</th>
+    <th>Register Number</th>
     <th>Manufacture Data</th>
     <th>Edit</th>
     <th>Delete</th>
     <tr th:each="car : ${cars}">
-      <td th:text="${car.id}"></td>
       <td th:text="${car.carMark}"></td>
+      <td th:text="${car.carModel}"></td>
+      <td th:text="${car.regID}"></td>
       <td th:text="${car.dateOfManufacture}"></td>
       <td><a class="btn btn-info" th:href="@{'/cars/edit-car/'+${car.id}}">Edit</a></td>
       <td><a class="btn btn-danger" th:href="@{'/cars/delete/'+${car.id}}">Delete</a></td>
     </tr>
   </table>
 </div>
+
 <footer th:replace="fragments :: footer"></footer>
 </body>
 </html>
