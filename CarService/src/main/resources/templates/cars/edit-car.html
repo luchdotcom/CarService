@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+<h4>Edit the Car</h4>
+<div class="col-6">
+  <form action="#" th:action="@{/cars/update/{id}(id=${id})}" th:object="${car}" method="post">
+    <div class="form-group">
+        <label for="car Mark">Car mark</label>
+        <input class="form-control" type="text" th:field="*{carMark}" placeholder="car Mark" id="car Mark">
+        <span class="text-danger" th:if="${#fields.hasErrors('carMark')}" th:errors="*{carMark}">car mark Error</span>
+    </div>
+    <div class="form-group">
+        <label for="car_model">car_model</label>
+        <input class="form-control" type="text" th:field="*{carModel}"
+             placeholder="Car model" id="car_model">
+        <span class="text-danger" th:if="${#fields.hasErrors('carModel')}"
+            th:errors="*{carModel}">Car Model Error</span>
+    </div>
+    <div class="form-group">
+        <label for="dateOfManufacture">Date of manufacture</label>
+        <input class="form-control" type="date" th:field="*{dateOfManufacture}" id="dateOfManufacture">
+        <span class="text-danger" th:if="${#fields.hasErrors('dateOfManufacture')}"
+              th:errors="*{dateOfManufacture}">Foundation Date Error</span>
+    </div>
+    <button type="submit" class="btn btn-primary">Update School</button>
+  </form>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

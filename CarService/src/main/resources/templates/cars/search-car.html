@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"><title></title></head>
+<body>
+<header th:replace="fragments :: header"></header>
+<h4>Register the Car</h4>
+<div class="col-6">
+    <form action="#" th:action="@{/cars/redID}" method="get">
+        <div class="form-group">
+            <label for="regID">Register number</label>
+            <input class="form-control" type="text" th:name="regID" placeholder="regID" id="regID">
+        </div>
+        <a class="btn btn-primary" th:href="@{'/cars/car/'}">Find Car</a>
+    </form>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>
