@@ -3,8 +3,10 @@ package com.informatics.CarService.data.entitys;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Past;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -14,54 +16,14 @@ import java.util.List;
 @Entity
 @Table(name = "cars")
 public class Car extends BaseEntity {
-//    public Car() {
-//    }
-//
-//    public Car(String carMark, String carModel, String regID, LocalDate dateOfManufacture) {
-//        this.carMark = carMark;
-//        CarModel = carModel;
-//        this.regID = regID;
-//        this.dateOfManufacture= dateOfManufacture;
-//
-//    }
-//
-//    public String getCarMark() {
-//        return carMark;
-//    }
-//
-//    public void setCarMark(String carMark) {
-//        this.carMark = carMark;
-//    }
-//
-//    public String getCarModel() {
-//        return CarModel;
-//    }
-//
-//    public void setCarModel(String carModel) {
-//        CarModel = carModel;
-//    }
-//
-//    public String getRegID() {
-//        return regID;
-//    }
-//
-//    public void setRegID(String regID) {
-//        this.regID = regID;
-//    }
 
     private String carMark;
 
-    public LocalDate getDateOfManufacture() {
-        return dateOfManufacture;
-    }
-
-    public void setDateOfManufacture(LocalDate dateOfManufacture) {
-        this.dateOfManufacture = dateOfManufacture;
-    }
-
-    private String CarModel;
+    private String carModel;
     private String regID;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Past(message = "The data has to be in the past")
     private LocalDate dateOfManufacture;
 
 
